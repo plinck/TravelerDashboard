@@ -21,7 +21,9 @@ In addition, you must push using `git subtree` vs git push since you are only pa
 * git subtree push --prefix server/ paullinck-travelerdash-web  master
 * git subtree push --prefix server/ paullinck-travelerdash-server  master
 
-Also, you must add a `composer.json` and `index.php` file to the web client directory.  This is because herkou can not run a static web site, so you fake it into thinking its a php app so it will use the heroku buildpack for php.  see `web/index.php` and `web/composer.json`,
+Also, you must add a `composer.json` and `index.php` file to the web client directory.  This is because herkou can not run a static web site, so you fake it into thinking its a php app so it will use the heroku buildpack for php.  see `web/index.php` and `web/composer.json`.
+
+BTW, you must remember to `git commit` anbd `git push` your repo before running the heroku push commands.
 
 ## Project Description
 
