@@ -9,6 +9,20 @@ This is the team for Project 1.  Team Members are:
 * Michael Wilson - UX/UI and geolcation
 * Paul Linck - firebase, and google address validation
 
+## Heroku Deployment Info
+
+This is one repo that deploys two apps to heroku - one for the web client and one for the node.js server.  There were a few complications to doing this.  First you must create 2 different apps on heroku since they both can not live in the same heroku app.  Do this with:
+
+* heroku create paullinck-travelerdash-web --remote paullinck-travelerdash-web
+* heroku create paullinck-travelerdash-server --remote paullinck-travelerdash-server
+
+In addition, you must push using `git subtree` vs git push since you are only passing a subdirectory of your git project to each app:
+
+* git subtree push --prefix server/ paullinck-travelerdash-web  master
+* git subtree push --prefix server/ paullinck-travelerdash-server  master
+
+Also, you must add a `composer.json` and `index.php` file to the web client directory.  This is because herkou can not run a static web site, so you fake it into thinking its a php app so it will use the heroku buildpack for php.  see `web/index.php` and `web/composer.json`,
+
 ## Project Description
 
 This is a Traveler Dashboard application.  You will be able populate weather information and top restaurants in any given place (city, address, POI etc).  You will also be able add and store  your favorite places to search.
